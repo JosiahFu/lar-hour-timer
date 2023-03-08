@@ -16,7 +16,10 @@ class WorkTime {
     }
 }
 
+let intervalId: number;
+
 const times = [
+    new WorkTime('2023-03-07 16:00:00', '2023-03-07 20:00:00', TimeType.Meeting),
     new WorkTime('2023-03-10 16:00:00', '2023-03-10 19:00:00', TimeType.Meeting),
     new WorkTime('2023-03-11 10:00:00', '2023-03-11 18:00:00', TimeType.Meeting),
     new WorkTime('2023-03-12 14:00:00', '2023-03-12 19:00:00', TimeType.Meeting),
@@ -30,13 +33,70 @@ const times = [
     new WorkTime('2023-03-15 16:00:00', '2023-03-15 21:00:00', TimeType.Lab)
 ];
 
-const update = () => {
-    const now = new Date();
-    const spans = times.filter(e => e.start <= now && now < e.end);
-    if (spans.length === 0) {
-        const next = times.reduce((e, s) => e.start > s && e.start < now ? e.start : s, new Date(0));
-        setTimeout(update, next - now);
-    }
-    const remaining = times.filter(e => now < e.start).reduce((e, s) => e + s);
-    const diff = spans[0] - now + remaining;
+function getNextSpan(now: Date) {
+    const diffs = times.map(e => e.start.getTime() - now.getTime());
+    const least = diffs.reduce((e, s) => e > 0 && e < s ? e : s, Infinity);
+    return times[diffs.indexOf(least)];
 }
+
+function updateTime() {
+    const now = new Date();
+    // Calculate sum of times after this span
+    const sumAfter = times
+        .filter(e => e.start.getTime() > now.getTime()) // Get all spans after this one
+        .map(e => e.end.getTime() - e.start.getTime()) // Find length of each
+        .reduce((e, s) => e + s, 0); // Find sum
+
+    let total = sumAfter;
+
+    // Calculate time left in this span
+    const currentSpans = times.filter(e => e.start <= now && now < e.end);
+    if (currentSpans.length > 0) {
+        const currentSpan = currentSpans[0];
+        const remaining = currentSpan.end.getTime() - now.getTime();
+        total += remaining;
+        if (now > currentSpan.end) {
+            clearInterval(intervalId);
+            waitForUpdating();
+        }
+    }
+
+
+    // Calculate numbers
+    const totalSeconds = total / 1000;
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor(totalSeconds / 60) % 60;
+    const seconds = Math.floor(totalSeconds % 60);
+
+    // Update divs
+    document.getElementById('hours')!.innerHTML = hours.toString().padStart(2, '0');
+    document.getElementById('minutes')!.innerHTML = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds')!.innerHTML = seconds.toString().padStart(2, '0');
+
+}
+
+function waitForUpdating() {
+    setTimeout(updatePerSecond, getNextSpan(new Date()).start.getTime() - Date.now());
+}
+
+function updatePerSecond() {
+    intervalId = setInterval(updateTime, 1000);
+}
+
+const now = new Date();
+if (times.filter(e => e.start <= now && now < e.end).length == 0) {
+    waitForUpdating();
+} else {
+    updatePerSecond();
+}
+
+updateTime();
+
+// If within a time:
+// Set interval to 
+//   count up
+//   if exited interval:
+//     stop interval
+//     set timeout to interval
+// else:
+// set timeout to interval

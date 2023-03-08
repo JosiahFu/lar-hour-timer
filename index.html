@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                sans-serif;
+            margin: 0;
+            background-color: #298c4b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .container {
+            margin: 2em;
+        }
+
+        .time,
+        .label {
+            text-align: center;
+            margin: 0.5em;
+            line-height: 1.5em;
+        }
+
+        .time {
+            font-size: 5em;
+        }
+
+        .label {
+            font-size: 4em;
+        }
+
+        .field {
+            background-color: #0000002f;
+            padding: 0.1em 0.2em;
+            border-radius: 0.1em;
+        }
+
+    </style>
+    <title>LAR Timer</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="time">
+            <span id="hours" class="field">...</span>
+            hours,
+            <span id="minutes" class="field">...</span>
+            minutes, and
+            <span id="seconds" class="field">...</span>
+            seconds
+        </div>
+        <div class="label">of meetings until LAR</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
