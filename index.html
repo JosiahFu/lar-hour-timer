@@ -28,6 +28,10 @@
             margin: 2em;
         }
 
+        .horizontal {
+            display: flex;
+        }
+
         .time,
         .label {
             text-align: center;
@@ -36,17 +40,28 @@
         }
 
         .time {
-            font-size: 5em;
+            font-size: 4em;
+            background-color: #00000020;
+            padding: 0.5em;
+            border-radius: 0.5em;
         }
 
         .label {
-            font-size: 4em;
+            font-size: .75em;
+        }
+
+        .horizontal .time {
+            font-size: 3em;
+            display: flex;
+            flex-flow: column nowrap;
+            text-align: left;
         }
 
         .field {
             background-color: #0000002f;
             padding: 0.1em 0.2em;
             border-radius: 0.1em;
+            font-family: 'Courier New', Courier, monospace;
         }
 
     </style>
@@ -55,15 +70,68 @@
 
 <body>
     <div class="container">
-        <div class="time">
-            <span id="hours" class="field">...</span>
-            hours,
-            <span id="minutes" class="field">...</span>
-            minutes, and
-            <span id="seconds" class="field">...</span>
-            seconds
+        <div class="horizontal">
+            <div>
+                <div class="time">
+                    <div>
+                        <span id="meeting-hours" class="field">...</span>
+                        hours
+                    </div>
+                    <div>
+                        <span id="meeting-minutes" class="field">...</span>
+                        minutes
+                    </div>
+                    <div>
+                        <span id="meeting-seconds" class="field">...</span>
+                        seconds
+                    </div>
+                    <div>of meetings</div>
+                </div>
+            </div>
+            <div>
+                <div class="time">
+                    <div>
+                        <span id="lab-hours" class="field">...</span>
+                        hours
+                    </div>
+                    <div>
+                        <span id="lab-minutes" class="field">...</span>
+                        minutes
+                    </div>
+                    <div>
+                        <span id="lab-seconds" class="field">...</span>
+                        seconds
+                    </div>
+                    <div>of open lab hours</div>
+                </div>
+            </div>
+            <div>
+                <div class="time">
+                    <div>
+                        <span id="class-hours" class="field">...</span>
+                        hours
+                    </div>
+                    <div>
+                        <span id="class-minutes" class="field">...</span>
+                        minutes
+                    </div>
+                    <div>
+                        <span id="class-seconds" class="field">...</span>
+                        seconds
+                    </div>
+                    <div>of class time</div>
+                </div>
+            </div>
         </div>
-        <div class="label">of meetings until LAR</div>
+        <div class="time">
+            <span id="total-hours" class="field">...</span>
+            hours
+            <span id="total-minutes" class="field">...</span>
+            minutes
+            <span id="total-seconds" class="field">...</span>
+            seconds
+            <div class="label">total until LAR</div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
