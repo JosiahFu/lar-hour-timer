@@ -26,12 +26,16 @@
 
         .container {
             margin: 2em;
+            max-width: 70em;
+            width: 100%;
+            display: flex;
+            flex-flow: column nowrap;
+            gap: 2em;
         }
 
         .horizontal {
             display: flex;
             gap: 2em;
-            margin: 2em 0;
         }
 
         .time {
@@ -55,6 +59,12 @@
             display: flex;
             flex-flow: column nowrap;
             text-align: left;
+            flex-grow: 1;
+            align-items: center;
+        }
+
+        .time-container {
+            width: fit-content;
         }
 
         .field {
@@ -63,6 +73,7 @@
             border-radius: 0.1em;
             font-family: 'Courier New', Courier, monospace;
         }
+
     </style>
     <title>LAR Timer</title>
 </head>
@@ -71,58 +82,64 @@
     <div class="container">
         <div class="horizontal">
             <div class="time">
-                <div>
-                    <span id="meeting-hours" class="field">...</span>
-                    hours
+                <div class="time-container">
+                    <div>
+                        <span id="meeting-hours" class="field">...</span>
+                        hr
+                    </div>
+                    <div>
+                        <span id="meeting-minutes" class="field">...</span>
+                        min
+                    </div>
+                    <div>
+                        <span id="meeting-seconds" class="field">...</span>
+                        sec
+                    </div>
+                    <div class="label">of meetings</div>
                 </div>
-                <div>
-                    <span id="meeting-minutes" class="field">...</span>
-                    minutes
-                </div>
-                <div>
-                    <span id="meeting-seconds" class="field">...</span>
-                    seconds
-                </div>
-                <div>of meetings</div>
             </div>
             <div class="time">
-                <div>
-                    <span id="lab-hours" class="field">...</span>
-                    hours
+                <div class="time-container">
+                    <div>
+                        <span id="lab-hours" class="field">...</span>
+                        hr
+                    </div>
+                    <div>
+                        <span id="lab-minutes" class="field">...</span>
+                        min
+                    </div>
+                    <div>
+                        <span id="lab-seconds" class="field">...</span>
+                        sec
+                    </div>
+                    <div class="label">of lab hours</div>
                 </div>
-                <div>
-                    <span id="lab-minutes" class="field">...</span>
-                    minutes
-                </div>
-                <div>
-                    <span id="lab-seconds" class="field">...</span>
-                    seconds
-                </div>
-                <div>of open lab hours</div>
             </div>
             <div class="time">
-                <div>
-                    <span id="class-hours" class="field">...</span>
-                    hours
+                <div class="time-container">
+                    <div>
+                        <span id="class-hours" class="field">...</span>
+                        hr
+                    </div>
+                    <div>
+                        <span id="class-minutes" class="field">...</span>
+                        min
+                    </div>
+                    <div>
+                        <span id="class-seconds" class="field">...</span>
+                        sec
+                    </div>
+                    <div class="label">of class time</div>
                 </div>
-                <div>
-                    <span id="class-minutes" class="field">...</span>
-                    minutes
-                </div>
-                <div>
-                    <span id="class-seconds" class="field">...</span>
-                    seconds
-                </div>
-                <div>of class time</div>
             </div>
         </div>
         <div class="time">
             <span id="total-hours" class="field">...</span>
-            hours
+            hr
             <span id="total-minutes" class="field">...</span>
-            minutes
+            min
             <span id="total-seconds" class="field">...</span>
-            seconds
+            sec
             <div class="label">total until LAR</div>
         </div>
     </div>
