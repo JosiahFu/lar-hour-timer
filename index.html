@@ -18,24 +18,19 @@
             font-size: 0.5em;
         }
 
-        @media screen and (min-width: 800px) {
-            body {
-                font-size: 1em;
-            }
-        }
-
         .container {
             margin: 2em;
             max-width: 70em;
             width: 100%;
             display: flex;
-            flex-flow: column nowrap;
+            flex-direction: column;
             gap: 2em;
         }
 
         .horizontal {
             display: flex;
             gap: 2em;
+            flex-direction: column;
         }
 
         .time {
@@ -57,7 +52,7 @@
         .horizontal .time {
             font-size: 3em;
             display: flex;
-            flex-flow: column nowrap;
+            flex-direction: column;
             text-align: left;
             flex-grow: 1;
             align-items: center;
@@ -65,6 +60,9 @@
 
         .time-container {
             width: fit-content;
+            display: flex;
+            flex-direction: row;
+            gap: 0.5em;
         }
 
         .field {
@@ -72,6 +70,35 @@
             padding: 0.1em 0.2em;
             border-radius: 0.1em;
             font-family: 'Courier New', Courier, monospace;
+        }
+
+        @media screen and (min-width: 500px) {
+            .horizontal {
+                flex-direction: row;
+            }
+
+            .time-container {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
+        @media screen and (min-width: 700px) {
+            body {
+                font-size: 0.75em;
+            }
+        }
+
+        @media screen and (min-width: 900px) {
+            body {
+                font-size: 1em;
+            }
+        }
+
+        @media screen and (min-width: 1600px) {
+            body {
+                font-size: 1.25em;
+            }
         }
 
     </style>
@@ -95,8 +122,8 @@
                         <span id="meeting-seconds" class="field">...</span>
                         sec
                     </div>
-                    <div class="label">of meetings</div>
                 </div>
+                <div class="label">of meetings</div>
             </div>
             <div class="time">
                 <div class="time-container">
@@ -112,8 +139,8 @@
                         <span id="lab-seconds" class="field">...</span>
                         sec
                     </div>
-                    <div class="label">of lab hours</div>
                 </div>
+                <div class="label">of lab hours</div>
             </div>
             <div class="time">
                 <div class="time-container">
@@ -129,8 +156,8 @@
                         <span id="class-seconds" class="field">...</span>
                         sec
                     </div>
-                    <div class="label">of class time</div>
                 </div>
+                <div class="label">of class time</div>
             </div>
         </div>
         <div class="time">
