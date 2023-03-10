@@ -29,7 +29,7 @@ const times = [
     new WorkTime('2023-03-10 08:50:00', '2023-03-10 10:05:00', TimeType.Class),
     new WorkTime('2023-03-13 09:45:00', '2023-03-13 10:35:00', TimeType.Class),
     new WorkTime('2023-03-15 08:50:00', '2023-03-15 10:30:00', TimeType.Class),
-    new WorkTime('2023-03-08 16:00:00', '2023-03-08 21:00:00', TimeType.Lab),   
+    new WorkTime('2023-03-08 16:00:00', '2023-03-08 21:00:00', TimeType.Lab),
     new WorkTime('2023-03-09 17:00:00', '2023-03-09 21:00:00', TimeType.Lab),
     new WorkTime('2023-03-12 11:00:00', '2023-03-12 14:00:00', TimeType.Lab),
     new WorkTime('2023-03-13 16:00:00', '2023-03-13 21:00:00', TimeType.Lab),
@@ -37,6 +37,7 @@ const times = [
 ];
 
 const categorizedTimes = {
+    total: times,
     meeting: times.filter(e => e.timeType == TimeType.Meeting),
     class: times.filter(e => e.timeType == TimeType.Class),
     lab: times.filter(e => e.timeType == TimeType.Lab)
@@ -58,6 +59,8 @@ function updateTime(timeset: WorkTime[], section: string) {
 
     let total = sumAfter;
 
+    let finished = false;
+
     // Calculate time left in this span
     const currentSpans = timeset.filter(e => e.start <= now && now < e.end);
     if (currentSpans.length > 0) {
@@ -65,8 +68,7 @@ function updateTime(timeset: WorkTime[], section: string) {
         const remaining = currentSpan.end.getTime() - now.getTime();
         total += remaining;
         if (now > currentSpan.end) {
-            clearInterval(intervalId);
-            waitForUpdating(timeset);
+            finished = true;
         }
     }
 
@@ -83,24 +85,30 @@ function updateTime(timeset: WorkTime[], section: string) {
 
 }
 
-function waitForUpdating(timeset: WorkTime[]) {
-    setTimeout(updatePerSecond, getNextSpan(timeset, new Date()).start.getTime() - Date.now());
+function waitForUpdating() {
+    setTimeout(updatePerSecond, getNextSpan(times, new Date()).start.getTime() - Date.now());
 }
 
-function updatePerSecond(timeset: WorkTime[], section: string) {
-    intervalId = setInterval(() => updateTime(timeset, section), 1000);
+function updatePerSecond() {
+    intervalId = setInterval(() => {
+        const results = Object.entries(categorizedTimes).map(([section, timeset]) => updateTime(timeset, section));
+        if (results.some(e => e)) {
+            clearInterval(intervalId);
+            waitForUpdating();
+        }
+    }, 1000);
 }
 
 const now = new Date();
-Object.entries({total: times, meeting: categorizedTimes.meeting, class: categorizedTimes.class, lab: categorizedTimes.lab}).forEach(i => {
-    if (i[1].filter(e => e.start <= now && now < e.end).length == 0) {
-        waitForUpdating(i[1]);
-    } else {
-        updatePerSecond(i[1], i[0]);
-    }
+if (times.filter(e => e.start <= now && now < e.end).length == 0) {
+    waitForUpdating();
+} else {
+    updatePerSecond();
+}
 
-    updateTime(i[1], i[0]);
-});
+for (let i in categorizedTimes) {
+    updateTime(categorizedTimes[<keyof typeof categorizedTimes>i], i);
+}
 
 // If within a time:
 // Set interval to 
