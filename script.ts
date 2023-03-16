@@ -33,7 +33,8 @@ const times = [
     new WorkTime('2023-03-09 17:00:00', '2023-03-09 21:00:00', TimeType.Lab),
     new WorkTime('2023-03-12 11:00:00', '2023-03-12 14:00:00', TimeType.Lab),
     new WorkTime('2023-03-13 16:00:00', '2023-03-13 21:00:00', TimeType.Lab),
-    new WorkTime('2023-03-15 16:00:00', '2023-03-15 21:00:00', TimeType.Lab)
+    new WorkTime('2023-03-15 16:00:00', '2023-03-15 21:00:00', TimeType.Lab),
+    new WorkTime('2023-03-16 16:00:00', '2023-03-16 21:00:00', TimeType.Lab)
 ];
 
 const categorizedTimes = {
