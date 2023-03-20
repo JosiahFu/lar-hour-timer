@@ -20,21 +20,34 @@ class WorkTime {
 let intervalId: number;
 
 const times = [
-    new WorkTime('2023-03-07 16:00:00', '2023-03-07 20:00:00', TimeType.Meeting),
-    new WorkTime('2023-03-10 16:00:00', '2023-03-10 19:00:00', TimeType.Meeting),
-    new WorkTime('2023-03-11 10:00:00', '2023-03-11 18:00:00', TimeType.Meeting),
-    new WorkTime('2023-03-12 14:00:00', '2023-03-12 19:00:00', TimeType.Meeting),
-    new WorkTime('2023-03-14 16:00:00', '2023-03-14 20:00:00', TimeType.Meeting),
-    new WorkTime('2023-03-08 08:50:00', '2023-03-08 10:30:00', TimeType.Class),
-    new WorkTime('2023-03-10 08:50:00', '2023-03-10 10:05:00', TimeType.Class),
-    new WorkTime('2023-03-14 08:50:00', '2023-03-14 10:20:00', TimeType.Class),
-    new WorkTime('2023-03-16 08:50:00', '2023-03-16 10:20:00', TimeType.Class),
-    new WorkTime('2023-03-08 16:00:00', '2023-03-08 21:00:00', TimeType.Lab),
-    new WorkTime('2023-03-09 17:00:00', '2023-03-09 21:00:00', TimeType.Lab),
-    new WorkTime('2023-03-12 11:00:00', '2023-03-12 14:00:00', TimeType.Lab),
-    new WorkTime('2023-03-13 16:00:00', '2023-03-13 21:00:00', TimeType.Lab),
-    new WorkTime('2023-03-15 16:00:00', '2023-03-15 21:00:00', TimeType.Lab),
-    new WorkTime('2023-03-16 16:00:00', '2023-03-16 21:00:00', TimeType.Lab)
+    new WorkTime('2023-03-24 16:00:00', '2023-03-24 19:00:00', TimeType.Meeting),
+    new WorkTime('2023-03-25 10:00:00', '2023-03-25 18:00:00', TimeType.Meeting),
+    new WorkTime('2023-03-26 14:00:00', '2023-03-26 19:00:00', TimeType.Meeting),
+    new WorkTime('2023-03-28 16:00:00', '2023-03-28 20:00:00', TimeType.Meeting),
+    new WorkTime('2023-03-31 14:00:00', '2023-03-31 19:00:00', TimeType.Meeting),
+    new WorkTime('2023-04-01 10:00:00', '2023-04-01 18:00:00', TimeType.Meeting),
+    new WorkTime('2023-04-02 14:00:00', '2023-04-02 19:00:00', TimeType.Meeting),
+    new WorkTime('2023-04-04 16:00:00', '2023-04-04 20:00:00', TimeType.Meeting),
+    new WorkTime('2023-04-07 16:00:00', '2023-04-07 19:00:00', TimeType.Meeting),
+    new WorkTime('2023-04-08 10:00:00', '2023-04-08 18:00:00', TimeType.Meeting),
+    new WorkTime('2023-04-11 16:00:00', '2023-04-11 20:00:00', TimeType.Meeting),
+    new WorkTime('2023-04-14 16:00:00', '2023-04-14 19:00:00', TimeType.Meeting),
+    new WorkTime('2023-04-15 10:00:00', '2023-04-15 18:00:00', TimeType.Meeting),
+    new WorkTime('2023-04-16 14:00:00', '2023-04-16 19:00:00', TimeType.Meeting),
+
+
+    new WorkTime('2023-03-20 09:45:00', '2023-03-20 10:35:00', TimeType.Class),
+    new WorkTime('2023-03-22 08:50:00', '2023-03-22 10:30:00', TimeType.Class),
+    new WorkTime('2023-03-24 08:50:00', '2023-03-24 10:05:00', TimeType.Class),
+
+    new WorkTime('2023-03-28 08:50:00', '2023-03-28 10:30:00', TimeType.Class),
+    new WorkTime('2023-03-30 08:50:00', '2023-03-30 10:05:00', TimeType.Class),
+
+    new WorkTime('2023-04-10 09:45:00', '2023-04-10 10:35:00', TimeType.Class),
+    new WorkTime('2023-04-12 08:50:00', '2023-04-12 10:30:00', TimeType.Class),
+    new WorkTime('2023-04-14 08:50:00', '2023-04-14 10:05:00', TimeType.Class),
+
+    //new WorkTime('2023-03-08 16:00:00', '2023-03-08 21:00:00', TimeType.Lab),
 ];
 
 const categorizedTimes = {
