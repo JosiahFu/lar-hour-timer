@@ -27,8 +27,6 @@ const times = [
     new WorkTime('2023-03-31 14:00:00', '2023-03-31 19:00:00', TimeType.Meeting),
     new WorkTime('2023-04-01 10:00:00', '2023-04-01 18:00:00', TimeType.Meeting),
     new WorkTime('2023-04-02 14:00:00', '2023-04-02 19:00:00', TimeType.Meeting),
-    new WorkTime('2023-04-04 16:00:00', '2023-04-04 20:00:00', TimeType.Meeting),
-    new WorkTime('2023-04-07 16:00:00', '2023-04-07 19:00:00', TimeType.Meeting),
     new WorkTime('2023-04-08 10:00:00', '2023-04-08 18:00:00', TimeType.Meeting),
     new WorkTime('2023-04-11 16:00:00', '2023-04-11 20:00:00', TimeType.Meeting),
     new WorkTime('2023-04-14 16:00:00', '2023-04-14 19:00:00', TimeType.Meeting),
@@ -44,7 +42,11 @@ const times = [
     new WorkTime('2023-04-12 08:50:00', '2023-04-12 10:30:00', TimeType.Class),
     new WorkTime('2023-04-14 08:50:00', '2023-04-14 10:05:00', TimeType.Class),
 
-    //new WorkTime('2023-03-08 16:00:00', '2023-03-08 21:00:00', TimeType.Lab),
+    new WorkTime('2023-04-03 16:00:00', '2023-04-03 21:00:00', TimeType.Lab),
+    new WorkTime('2023-04-04 16:00:00', '2023-04-04 21:00:00', TimeType.Lab),
+    new WorkTime('2023-04-05 16:00:00', '2023-04-05 21:00:00', TimeType.Lab),
+    new WorkTime('2023-04-06 16:00:00', '2023-04-06 21:00:00', TimeType.Lab),
+    new WorkTime('2023-04-07 16:00:00', '2023-04-07 21:00:00', TimeType.Lab),
 ];
 
 const categorizedTimes = {
