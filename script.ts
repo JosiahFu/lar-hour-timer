@@ -31,7 +31,6 @@ const times = [
     new WorkTime('2023-04-11 16:00:00', '2023-04-11 20:00:00', TimeType.Meeting),
     new WorkTime('2023-04-14 14:45:00', '2023-04-14 21:00:00', TimeType.Meeting),
     new WorkTime('2023-04-15 10:00:00', '2023-04-15 18:00:00', TimeType.Meeting),
-    new WorkTime('2023-04-16 14:00:00', '2023-04-16 19:00:00', TimeType.Meeting),
 
     new WorkTime('2023-03-20 09:45:00', '2023-03-20 10:35:00', TimeType.Class),
     new WorkTime('2023-03-22 08:50:00', '2023-03-22 10:30:00', TimeType.Class),
